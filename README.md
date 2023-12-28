@@ -6,6 +6,9 @@ This is a Book Rental and Management System.
 2) See the introduction of book in detail page.
 3) Be recommended some book list related books that you rented before.
 
+## ERD
+![ERD](https://github.com/daseulsong-git/Library/assets/50701343/f836441c-a657-4a11-980e-676484f04c4b)
+
 ## Prerequisites and Execution
 
 To run the Spring Boot Project, follow these steps :

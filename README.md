@@ -2,9 +2,18 @@
 This is a Book Rental and Management System.
 
 ## Features
-1) Search book list on keyword.
-2) See the introduction of book in detail page.
-3) Be recommended some book list related books that you rented before.
+1) Member
+- Sign Up
+- Log In
+- Log Out
+- View Rental History
+2) Books
+- Search for Books
+- View Book Details
+3) Rental
+- Rent a Book
+- Return a Book
+- Extend Book Rental Duration
 
 ## ERD
 ![ERD](https://github.com/daseulsong-git/Library/assets/50701343/f836441c-a657-4a11-980e-676484f04c4b)

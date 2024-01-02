@@ -9,6 +9,7 @@ public class Books {
   @Column(name="BOOK_ID")
   private String id;
   private String title;
+  private String summary; //추가
   private String author;
   private String stock;
 }

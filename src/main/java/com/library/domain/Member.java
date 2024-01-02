@@ -11,6 +11,7 @@ public class Member {
     private String password;
     private String name;
     private String birthDate;
+    private String email; //추가
     private String address;
     private String addressDetail;
 

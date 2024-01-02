@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3; /* 배경색 */
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 500px; /* 로그인 폼 너비 */
+            background-color: #fff; /* 로그인 폼 배경색 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffc107; /* 배너 배경색 */
+            color: #333; /* 배너 텍스트 색상 */
+            border-radius: 8px;
+            margin-bottom: 20px;
+            width: 90%; /* 배너 너비 */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 8px; /* 각 입력 요소 간격 설정 */
+        }
+
+        .form-group input[type="text"].invalid,
+        .form-group input[type="password"].invalid {
+            border: 1px solid red; /* 입력되지 않은 필드 경고 테두리 */
+        }
+
+        .form-group button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #ffc107; /* 버튼 배경색 */
+            color: #333; /* 버튼 텍스트 색상 */
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: calc(100% - 22px); /* 로그인 버튼과 맞춤 */
+        }
+
+        .signup-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #ccc; /* 회원가입 버튼 배경색 */
+            color: #333; /* 버튼 텍스트 색상 */
+            cursor: pointer;
+            width: calc(100% - 22px); /* 회원가입 버튼과 맞춤 */
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="banner">
+        <h1>Log In Please</h1>
+    </div>
+    <form th:action="@{/login}" method="post" id="loginForm">
+        <div class="form-group">
+            <label for="userId">Id</label>
+            <input type="text" id="userId" name="userId" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>
+        <button class="signup-btn">Sign Up</button>
+    </form>
+
+</div>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        const inputs = document.querySelectorAll('input[required]');
+        inputs.forEach(function(input) {
+            if (!input.checkValidity()) {
+                event.preventDefault();
+                input.classList.add('invalid');
+            } else {
+                input.classList.remove('invalid');
+            }
+        });
+    });
+
+    const inputs = document.querySelectorAll('input[required]');
+    inputs.forEach(function(input) {
+        input.addEventListener('input', function() {
+            if (this.checkValidity()) {
+                this.classList.remove('invalid');
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -2,15 +2,15 @@
 This is a Book Rental and Management System.
 
 ## Features
-1) Member
+### Member
 - Sign Up
 - Log In
 - Log Out
 - View Rental History
-2) Books
+### Books
 - Search for Books
 - View Book Details
-3) Rental
+### Rental
 - Rent a Book
 - Return a Book
 - Extend Book Rental Duration

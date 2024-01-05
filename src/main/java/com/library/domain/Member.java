@@ -3,6 +3,7 @@ package com.library.domain;
 import lombok.Data;
 import javax.persistence.*;
 
+@Entity
 @Data
 public class Member {
     @Id
@@ -11,7 +12,6 @@ public class Member {
     private String password;
     private String name;
     private String birthDate;
-    private String email; //추가
     private String address;
     private String addressDetail;
 

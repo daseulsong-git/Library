@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffdfd;
+      color: #333; /* Text color */
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #ffc107;
+      color: #fff;
+      width: 10%;
+    }
+    .button-container {
+      text-align: right;
+      margin-right: 10%;
+      margin-top: 20px;
+      margin-bottom: 20px; /* 버튼과 테이블 사이 여백 추가 */
+      overflow: auto; /* 버튼과 테이블을 함께 감싸는 div 요소를 정렬하기 위한 설정 */
+    }
+    .button {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ffc107;
+      color: #fff;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #ffad33;
+    }
+  </style>
+</head>
+<body>
+<div style="overflow:auto;">
+  <table>
+    <tr>
+      <th>Book Details</th>
+      <td th:text="${book.title}"></td>
+    </tr>
+    <tr>
+      <th>Author</th>
+      <td th:text="${book.author}"></td>
+    </tr>
+    <tr>
+      <th>Publisher</th>
+      <td th:text="${book.publisher}"></td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td th:text="${book.price}"></td>
+    </tr>
+    <tr>
+      <th>Publication Date</th>
+      <td th:text="${book.publicationDate}"></td>
+    </tr>
+  </table>
+  <div class="button-container">
+    <button class="button" onclick="history.back()">Go Back</button>
+    <button class="button">Rent</button>
+  </div>
+</div>
+
+</body>
+</html>

@@ -92,19 +92,35 @@
         .input-error {
             border: 1px solid red !important;
         }
+        .duplicate-check-btn {
+            background-color: #e7cc4d;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .duplicate-check-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Sign Up</h1>
     <form th:action="@{/signup}" method="post">
-        <div class="input-field">
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id" th:required="required">
-        </div>
-        <div class="input-field">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" th:required="required">
+            <div class="input-field">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" th:required="required" style="width: 70%;">
+                <button type="button" id="duplicateCheckBtn" class="duplicate-check-btn">Check</button>
+                <p id="duplicateResult" th:if="${duplicateResult != null}" th:text="${duplicateResult}"/>
+            </div>
+            <div class="input-field">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="assword" th:required="required">
         </div>
         <div class="input-field">
             <label for="username">Username:</label>
@@ -134,6 +150,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const dobField = document.getElementById('dob');
@@ -169,6 +186,28 @@
             }
         }).open();
     }
+</script>
+<script>
+    $(document).ready(function() {
+        $('#duplicateCheckBtn').click(function() {
+            var idValue = $('#id').val().trim();
+            if (idValue !== '') {
+                $.ajax({
+                    type: 'GET',
+                    url: '/checkDuplicate?id=' + idValue,
+                    success: function(response) {
+                        alert(response);
+                        $('#duplicateResult').text(response);
+                    },
+                    error: function() {
+                        console.error('Error during AJAX request');
+                    }
+                });
+            } else {
+                alert('Please enter an ID');
+            }
+        });
+    });
 </script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Rental List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .rental-list-container {
+            margin-top: 20px;
+        }
+        .rental-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 style="color: #ffc107;">Book Rental List</h1>
+    <div class="rental-list-container">
+        <div th:if="${books.isEmpty()}">
+            <p>No books are currently rented.</p>
+        </div>
+        <div th:each="book : ${books}" class="rental-item">
+            <h4 th:text="${book.title}"></h4>
+            <p th:text="'Author: ' + ${book.author}"></p>
+            <p th:text="'Publication Date: ' + ${book.publicationDate}"></p>
+            <!-- Add other book information here -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

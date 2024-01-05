@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book List Search</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .search-form {
+      margin-bottom: 20px;
+    }
+    .book-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .book-table th, .book-table td {
+      border: 1px solid #dee2e6;
+      padding: 8px;
+      text-align: left;
+    }
+    .book-table th {
+      background-color: #ffc107;
+      color: #fff;
+    }
+    /* Custom style to reduce select box width */
+    #searchBy {
+      width: 120px; /* Adjust the width as needed */
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 style="color: #ffc107;">Book List Search</h1>
+
+  <!-- Search form -->
+  <form th:action="@{/search}" method="get" class="search-form">
+    <div class="form-row">
+      <div class="form-group col-md-4 d-flex align-items-end">
+        <select class="form-control mr-2" id="searchBy" name="searchBy">
+          <option value="author">Author</option>
+          <option value="title">Title</option>
+        </select>
+        <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Enter search term">
+      </div>
+      <div class="form-group col-md-2">
+        <button type="submit" class="btn btn-primary" style="margin-top:32px;background-color:#e7cc4d;border-color:#e7cc4d;">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Search result table -->
+  <table class="book-table">
+    <thead>
+    <tr>
+      <th>Book Title</th>
+      <th>Author</th>
+      <th>Publication Date</th>
+      <!-- Add additional book information columns if needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Displaying searched book list dynamically using Thymeleaf -->
+    <tr th:each="book : ${searchResults}">
+      <td th:text="${book.title}"></td>
+      <td th:text="${book.author}"></td>
+      <td th:text="${book.publicationDate}"></td>
+      <!-- Add additional book information cells if needed -->
+    </tr>
+
+    <!-- Display message if no search results are found -->
+    <tr th:if="${searchResults.isEmpty()}">
+      <td colspan="3">No search results found.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
